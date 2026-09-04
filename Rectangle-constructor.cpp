@@ -7,17 +7,33 @@ class Rectangle
 
 public:
 
-    // Parameterized Constructor
+    // 1. Default Constructor
+    Rectangle()
+    {
+        length = 0;
+        breadth = 0;
+    }
+
+    // 2. Parameterized Constructor
     Rectangle(int l, int b)
     {
         length = l;
         breadth = b;
     }
 
-    // Calculate Area
+    // 3. Copy Constructor
+    Rectangle(Rectangle &r)
+    {
+        length = r.length;
+        breadth = r.breadth;
+    }
+
+    // Display Area
     void area()
     {
-        cout << "Area of Rectangle = " << length * breadth << endl;
+        cout << "Length = " << length << endl;
+        cout << "Breadth = " << breadth << endl;
+        cout << "Area = " << length * breadth << endl;
     }
 };
 
@@ -25,16 +41,30 @@ int main()
 {
     int length, breadth;
 
+    // User Input
     cout << "Enter Length: ";
     cin >> length;
 
     cout << "Enter Breadth: ";
     cin >> breadth;
 
-    // Passing user input to constructor
-    Rectangle r(length, breadth);
+    // Default Constructor
+    Rectangle r1;
 
-    r.area();
+    cout << "\nDefault Constructor:" << endl;
+    r1.area();
+
+    // Parameterized Constructor
+    Rectangle r2(length, breadth);
+
+    cout << "\nParameterized Constructor:" << endl;
+    r2.area();
+
+    // Copy Constructor
+    Rectangle r3(r2);
+
+    cout << "\nCopy Constructor:" << endl;
+    r3.area();
 
     return 0;
 }
